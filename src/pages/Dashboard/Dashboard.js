@@ -7,6 +7,9 @@ import { db } from "../../firebase/config";
 import Navbar from '../../components/Navbar'
 import DeviceSelection from '../../components/DeviceSelection';
 
+// styles and images
+import '../Dashboard/Dashboard.css';
+
 export default function Dashboard() {
 
   const query = collection(db, "Cisco");
@@ -22,8 +25,8 @@ export default function Dashboard() {
   return (
     <div>
       <Navbar />
-      <label>
-        <span>Cisco Product Family</span>
+      <div className='custom-select'>
+        <span>Cisco Product Family: </span>
         <select
           onChange={(e) => setCiscoFamily(e.target.value)}
         >
@@ -32,7 +35,7 @@ export default function Dashboard() {
             <option key={docs.name}>{docs.name}</option>
           ))}
         </select>
-      </label>
+      </div>
       <p>You have selected: {ciscoFamily}</p>
       {ciscoFamily && <DeviceSelection path={`Cisco/${ciscoFamily}/Children`} />}
     </div>

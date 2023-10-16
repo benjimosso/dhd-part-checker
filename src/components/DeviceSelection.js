@@ -15,7 +15,7 @@ export default function DeviceSelection({ path }) {
     return (
         <div>
             <label>
-                <span>Cisco Product Family</span>
+                <span>Cisco Device: </span>
                 <select
                     onChange={(e) => setSelectedDevice(e.target.value)}
                 >
@@ -36,6 +36,14 @@ export default function DeviceSelection({ path }) {
                         <li key={index}>{power}</li>
                     ))}
                 </h4>
+                <h4>Network Module: 
+                    {docs.networkmodule && docs.networkmodule.map((module, index) => (
+                        <li key={index}>{module}</li>
+                    ))}
+                </h4>
+
+                <h2>Test: {docs.Testid}</h2>
+                {console.log(docs.networkmodulesid)}
                 </div>
                
             ))}
